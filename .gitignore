@@ -4,3 +4,22 @@
 *.jar
 *.war
 *.ear
+
+#Eclipse#
+.classpath
+.project
+
+#Testing#
+tester/
+#build stuff#
+buildjar.xml
+jar-in-jar-loader.zip
+
+#javadoc#
+doc/
+
+*.prefs
+ 
+*/libs
+*/bin
+*prep/
