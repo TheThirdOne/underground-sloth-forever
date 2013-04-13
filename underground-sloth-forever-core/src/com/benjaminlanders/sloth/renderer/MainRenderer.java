@@ -1,4 +1,4 @@
-package com.benjaminlanders.zombie.view;
+package com.benjaminlanders.sloth.renderer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
