@@ -14,10 +14,21 @@ public class Assets
  	public static Animation[] animations = new Animation[1];
  	public static final int legsAnim = 0;
 	
-	private static final String[] imageAddress = {"nullimage","libgdx"};
-	public static TextureRegion[] images = new TextureRegion[2];
+	private static final String[] imageAddress = {"nullimage","libgdx","game-background","story-background",
+		"story-1","story-2","story-3","story-4","story-5","story-6","story-7","story-8"};
+	public static TextureRegion[] images = new TextureRegion[12];
 	public static final int nullimage = 0;
 	public static final int libGdx = 1;
+	public static final int background = 2;
+	public static final int story0 = 3;
+	public static final int story1 = 4;
+	public static final int story2 = 5;
+	public static final int story3 = 6;
+	public static final int story4 = 7;
+	public static final int story5 = 8;
+	public static final int story6 = 9;
+	public static final int story7 = 10;
+	public static final int story8 = 11;
 	
 	/**
 	 * gets the image if its loaded, if not it loads and then gives it

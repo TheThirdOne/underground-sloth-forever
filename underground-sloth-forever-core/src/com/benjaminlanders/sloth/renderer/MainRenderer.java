@@ -35,18 +35,12 @@ public class MainRenderer extends Renderer
 	{
         stateTime += delta;                     
         currentFrame = Assets.animations[Assets.legsAnim].getKeyFrame(stateTime, true); 
-		batch.begin();
-
-		float dY = (-1f*Gdx.input.getY(0)/reference.height+1-character.y), dX = (1f*Gdx.input.getX(0)/reference.width-character.x);
-		float temp = (float) Math.atan(dY/dX);
-		int flip = (dX < 0)?-1:1;
 		reference.animator.render(stateTime);
 		character.update(stateTime);
 		character.render(batch);
 		//entity.render(batch);
 		
 		font.draw(batch, "" + Gdx.graphics.getFramesPerSecond(), 400, 300);
-        batch.end();
 	}
 
 	@Override
