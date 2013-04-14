@@ -1,6 +1,5 @@
 package com.benjaminlanders.sloth.model;
 
-import com.badlogic.gdx.Gdx;
 
 public class World
 {

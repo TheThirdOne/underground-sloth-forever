@@ -1,7 +1,6 @@
 package com.benjaminlanders.sloth.controller;
 
 import com.badlogic.gdx.Gdx;
-import com.benjaminlanders.sloth.SlothMain;
 import com.benjaminlanders.sloth.helper.Assets;
 import com.benjaminlanders.sloth.model.Block;
 import com.benjaminlanders.sloth.model.Player;

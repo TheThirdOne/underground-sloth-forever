@@ -1,9 +1,7 @@
 package com.benjaminlanders.sloth.renderer;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.benjaminlanders.sloth.helper.Assets;
 
 public class GraphicCharacter extends GraphicEntity
 {
