@@ -22,7 +22,7 @@ public class SplashScreen extends Renderer
 	public void render(float delta)
 	{
 		timeElapsed += delta;
-		batch.draw(splash, 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		batch.draw(splash, 0,0, SlothMain.width, SlothMain.height);
 	}
 	public boolean isFinished()
 	{

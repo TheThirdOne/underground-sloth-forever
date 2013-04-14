@@ -13,9 +13,9 @@ import com.benjaminlanders.sloth.helper.Assets;
  */
 public class MainRenderer extends Renderer
 {
+	public Animator animator;
 	TextureRegion currentFrame;
 	float stateTime = 0;
-	int count = 1;
 	AnimationUnit[] frameUpdater = new AnimationUnit[6];
 	GraphicEntity entity;
 	GraphicCharacter character;
@@ -26,6 +26,7 @@ public class MainRenderer extends Renderer
 		super(batch, reference);
 		frameUpdater[0] = new AnimationUnit(0,Animation.NORMAL,Assets.legsAnim,0,0,true);
 		entity = new GraphicEntity(frameUpdater);
+		animator = new Animator();
 		//character = new GraphicCharacter(reference.animator, Assets.legsAnim, Assets.armsAnim, Assets.gunAnim, Assets.fireAnim);
 		//reference.animator.addAnimations(frameUpdater);
 	}
@@ -33,11 +34,12 @@ public class MainRenderer extends Renderer
 	@Override
 	public void render(float delta) 
 	{
-        stateTime += delta;                     
-        currentFrame = Assets.animations[Assets.legsAnim].getKeyFrame(stateTime, true); 
-		reference.animator.render(stateTime);
-		character.update(stateTime);
-		character.render(batch);
+        stateTime += delta; 
+        batch.draw(Assets.getImage(Assets.background), 0,0, SlothMain.width, SlothMain.height);
+       // currentFrame = Assets.animations[Assets.legsAnim].getKeyFrame(stateTime, true); 
+		//animator.render(stateTime);
+		//character.update(stateTime);
+		//character.render(batch);
 		//entity.render(batch);
 		
 		font.draw(batch, "" + Gdx.graphics.getFramesPerSecond(), 400, 300);

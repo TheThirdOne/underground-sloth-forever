@@ -8,8 +8,8 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "underground-sloth-forever";
 		cfg.useGL20 = false;
-		cfg.width = 1000;
-		cfg.height = 1000;
+		cfg.width = 600;
+		cfg.height = 400;
 		
 		new LwjglApplication(new SlothMain(), cfg);
 	}
