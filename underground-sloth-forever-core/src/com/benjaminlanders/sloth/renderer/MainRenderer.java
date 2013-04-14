@@ -18,16 +18,16 @@ public class MainRenderer extends Renderer
 	float stateTime = 0;
 	AnimationUnit[] frameUpdater = new AnimationUnit[6];
 	GraphicEntity entity;
-	GraphicCharacter character;
+	GraphicCharacter player;
 	
 	BitmapFont font = new BitmapFont();
 	public MainRenderer(SpriteBatch batch, SlothMain reference)
 	{
 		super(batch, reference);
-		frameUpdater[0] = new AnimationUnit(0,Animation.NORMAL,Assets.legsAnim,0,0,true);
+		frameUpdater[0] = new AnimationUnit(0,Animation.NORMAL,Assets.bodyAnim,0,0,true);
 		entity = new GraphicEntity(frameUpdater);
 		animator = new Animator();
-		//character = new GraphicCharacter(reference.animator, Assets.legsAnim, Assets.armsAnim, Assets.gunAnim, Assets.fireAnim);
+		player = new GraphicCharacter(animator, Assets.bodyAnim,  Assets.armAnim,  Assets.bodyAnim);
 		//reference.animator.addAnimations(frameUpdater);
 	}
 
@@ -37,11 +37,11 @@ public class MainRenderer extends Renderer
         stateTime += delta; 
         batch.draw(Assets.getImage(Assets.background), 0,0, SlothMain.width, SlothMain.height);
        // currentFrame = Assets.animations[Assets.legsAnim].getKeyFrame(stateTime, true); 
-		//animator.render(stateTime);
-		//character.update(stateTime);
-		//character.render(batch);
+		animator.render(stateTime);
+		//player.update(stateTime);
+		player.render(batch);
 		//entity.render(batch);
-		
+		//Graphics.draw(batch, Assets.getAnimation(Assets.bodyAnim).getKeyFrame(stateTime, true), .4f, .3f, .1f, 0, true);
 		font.draw(batch, "" + Gdx.graphics.getFramesPerSecond(), 400, 300);
 	}
 

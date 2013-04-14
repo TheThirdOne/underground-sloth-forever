@@ -10,9 +10,11 @@ import com.benjaminlanders.sloth.helper.Loader;
 public class Assets
 {
 	public static SlothMain application;
-	private static final String[] animationAddress = {"legs"};
- 	public static Animation[] animations = new Animation[1];
- 	public static final int legsAnim = 0;
+	private static final String[] animationAddress = {"character/body","character/arm"};
+ 	public static Animation[] animations = new Animation[2];
+ 	public static final int bodyAnim = 0;
+ 	public static final int armAnim = 1;
+ 	
 	
 	private static final String[] imageAddress = {"nullimage","libgdx","game-background","story-background",
 		"story-1","story-2","story-3","story-4","story-5","story-6","story-7","story-8"};

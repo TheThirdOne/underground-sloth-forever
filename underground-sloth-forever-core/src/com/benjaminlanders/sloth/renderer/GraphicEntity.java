@@ -35,5 +35,15 @@ public class GraphicEntity
 					yCenter[i]+unit.frame.getRegionHeight()/2,.1f,rotation); 
 		}
 	}
+	public void render(SpriteBatch batch, boolean flipX)
+	{
+		AnimationUnit unit;
+		for(int i = 0; i < units.length;i++)
+		{
+			unit = units[i];	
+			Graphics.draw(batch,unit.frame,x,y,xCenter[i]+unit.frame.getRegionWidth()/2,
+					yCenter[i]+unit.frame.getRegionHeight()/2,((flipX)?-1:1)*.1f, .1f,rotation); 
+		}
+	}
 
 }

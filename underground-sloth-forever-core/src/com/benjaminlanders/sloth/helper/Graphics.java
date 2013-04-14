@@ -23,6 +23,20 @@ public class Graphics
 		draw(batch,region,x,y,scale,scale,rotation);
 	}
 	/**
+	 * Draws a TextureRegion to a SpriteBatch with scale and rotation
+	 * @param batch the SpriteBatch
+	 * @param region the region 
+	 * @param x the x value of the center
+	 * @param y the y value of the center
+	 * @param scale the scale 1 = same as region, 2 = twice size
+	 * @param rotation the rotation in degrees
+	 * @param flipX flips over the Y axis?
+	 */
+	public static void draw(SpriteBatch batch, TextureRegion region,float x, float y,float scale, float rotation, boolean flipX)
+	{
+		draw(batch,region,x,y,scale*((flipX)?-1:1),scale,rotation);
+	}
+	/**
 	 * Draws a TextureRegion to a SpriteBatch with separate scaling and rotation
 	 * @param batch the SpriteBatch
 	 * @param region the region 
@@ -69,5 +83,6 @@ public class Graphics
 		x *= SlothMain.width;
 		batch.draw(region,- xSrc+x, -ySrc+y, xSrc, ySrc, region.getRegionWidth(),  region.getRegionHeight(), scaleX*SlothMain.width*.005f, scaleY*SlothMain.width*.005f, rotation);
 	}
+	
 
 }
