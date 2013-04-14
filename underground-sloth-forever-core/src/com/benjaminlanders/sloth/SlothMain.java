@@ -30,6 +30,7 @@ public class SlothMain implements ApplicationListener
 				new int[]{Assets.story1 , Assets.story2, Assets.story3 , Assets.story4,
 							Assets.story5, Assets.story6 , Assets.story7, Assets.story8});
 		main = new MainRenderer(batch, this);
+		Gdx.app.log("test",""+ Float.parseFloat(Assets.getString(Assets.level1).split("\n")[0].split(",")[0]));
 	}
 
 	@Override

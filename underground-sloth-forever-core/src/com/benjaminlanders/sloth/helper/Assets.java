@@ -32,6 +32,21 @@ public class Assets
 	public static final int story7 = 10;
 	public static final int story8 = 11;
 	
+	private static final String[] stringAddress = {"level-1"};
+	public static String[] strings = new String[1];
+	public static final int level1 = 0;
+	public static String getString(int reference)
+	{
+		if(strings.length <= reference)
+			return null;
+		if(strings[reference]==null)
+		{
+			strings[reference] = Gdx.files.internal("strings/"+stringAddress[reference]+".txt").readString();
+		}
+		return strings[reference];
+		
+	}
+	
 	/**
 	 * gets the image if its loaded, if not it loads and then gives it
 	 * @param reference the value in the array for the correct image. use the constants

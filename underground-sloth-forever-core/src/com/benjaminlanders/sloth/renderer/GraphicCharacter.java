@@ -22,8 +22,6 @@ public class GraphicCharacter extends GraphicEntity
 		units[4] = new AnimationUnit(0, Animation.NORMAL, climb, 0f, -1f, true);	
 		
 		animator.addAnimations(units);
-		//yCenter[3] = -180;
-		//xCenter[3] = -40;
 		x = .5f;
 		y = .5f;
 
