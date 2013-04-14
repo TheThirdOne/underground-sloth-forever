@@ -1,6 +1,7 @@
 package com.benjaminlanders.sloth.renderer;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.benjaminlanders.sloth.SlothMain;
 import com.benjaminlanders.sloth.helper.Graphics;
 
 /**
@@ -45,5 +46,13 @@ public class GraphicEntity
 					yCenter[i]+unit.frame.getRegionHeight()/2,((flipX)?-1:1)*.1f, .1f,rotation); 
 		}
 	}
-
+	public void render(SpriteBatch batch, boolean flipX,float scaleX, float scaleY)
+	{
+		for(int i = 0; i < units.length;i++)
+		{	
+			batch.draw(units[i].frame,x*SlothMain.width-scaleX*SlothMain.width/2, 
+					y*SlothMain.height-scaleY*SlothMain.height/2, scaleX*SlothMain.width,scaleY*SlothMain.height);
+			//Gdx.app.log("test","x"++"y"+"width"+"h" );
+		}
+	}
 }

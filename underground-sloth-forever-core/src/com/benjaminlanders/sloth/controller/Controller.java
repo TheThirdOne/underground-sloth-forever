@@ -23,17 +23,17 @@ public class Controller
 		boolean walking = false, climbing = false;
 		for(Block block: world.blocks)
 		{
-			walking |= testCollision(block,player.x,player.y-.23f);
+			walking |= testCollision(block,player.x,player.y-.05f);
 		}
 		for(Block block: world.vines)
 		{
-			climbing |= testCollision(block,player.x,player.y-.20f);
+			climbing |= testCollision(block,player.x,player.y-.04f);
 			
 		}
 		walking |= climbing;
-		float deltaY = (climbing&&Gdx.input.isTouched())?(-Gdx.input.getY()/((float)Gdx.graphics.getHeight()) + player.y)/50:((walking)?0:-.025f);
-		Gdx.app.log("climbing?", "" + deltaY);
+		float deltaY = (climbing&&Gdx.input.isTouched())?.005f:((walking)?0:-.025f);
 		player.playerUpdate(Gdx.input.getX()/((float)Gdx.graphics.getWidth()) - player.x,deltaY , walking, climbing);
+		
 	}
 	public static boolean testCollision(Block block, float x , float y)
 	{

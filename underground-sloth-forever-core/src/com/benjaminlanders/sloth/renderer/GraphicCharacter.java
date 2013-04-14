@@ -1,13 +1,15 @@
 package com.benjaminlanders.sloth.renderer;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.benjaminlanders.sloth.helper.Assets;
 
 public class GraphicCharacter extends GraphicEntity
 {
 	float stateTime;
 	public boolean left = false;
-	boolean prepared = false;
+	public boolean walking, climbing, standing;
 	/**
 	 * 
 	 * @param animator the animator that will be used to animate the animations
@@ -31,20 +33,60 @@ public class GraphicCharacter extends GraphicEntity
 	{
 		this.stateTime = stateTime;
 	}
-	public void climb(){
-	
+	public void climb()
+	{
+		if(!climbing)
+		{
+			units[0].timeEnded = 0;
+			units[1].timeEnded = -1;
+			units[2].timeEnded = 0;
+			units[3].timeEnded = -1;
+			units[4].timeEnded = 0;	
+			
+			units[0].timeStarted = stateTime+.15f;
+			units[2].timeStarted = stateTime;
+			units[4].timeStarted = stateTime;
+			climbing = true;
+		}
+		walking = false;
+		standing = false;
 	}
 	public void walk()
 	{
-		
+		if(!walking)
+		{
+			units[0].timeEnded = -1;
+			units[1].timeEnded = 0;
+			units[2].timeEnded = 0;
+			units[3].timeEnded = 0;
+			units[4].timeEnded = -1;	
+			
+			units[1].timeStarted = stateTime+.15f;
+			units[2].timeStarted = stateTime;
+			units[3].timeStarted = stateTime;
+			walking = true;
+		}
+		standing = false;
+		climbing = false;
 	}
 	public void stand()
 	{
-		
+		if(!standing)
+		{
+			units[0].timeEnded = -1;
+			units[1].timeEnded = 0;
+			units[2].timeEnded = 0;
+			units[3].timeEnded = 0;
+			units[4].timeEnded = -1;	
+			standing = true;
+		}
+		walking = false;
+		climbing = false;
 	}
 	public void render(SpriteBatch batch)
 	{
-		super.render(batch,left);
+				
+		super.render(batch,left,.1f,.1f);
 	}
 
 }
