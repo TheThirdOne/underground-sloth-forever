@@ -1,11 +1,14 @@
 package com.benjaminlanders.sloth.model;
 
+import com.badlogic.gdx.Gdx;
+
 public class World
 {
 	public Block[] blocks, vines;
 	public World(String file)
 	{
-		String[] types = file.split("|");
+		String[] types = file.split("=");
+		Gdx.app.log("test", types[0]);
 		String[] blocks = types[0].split("\n");
 		String[] vines =  types[1].split("\n");
 		this.blocks = loadBlocks(blocks);

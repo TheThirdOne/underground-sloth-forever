@@ -41,7 +41,9 @@ public class Assets
 			return null;
 		if(strings[reference]==null)
 		{
+			
 			strings[reference] = Gdx.files.internal("strings/"+stringAddress[reference]+".txt").readString();
+			
 		}
 		return strings[reference];
 		

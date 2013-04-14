@@ -1,19 +1,23 @@
 package com.benjaminlanders.sloth.renderer;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.benjaminlanders.sloth.SlothMain;
 import com.benjaminlanders.sloth.controller.Controller;
 import com.benjaminlanders.sloth.helper.Assets;
+import com.benjaminlanders.sloth.model.Block;
 /**
  * Currently a test bed for graphics
  * @author Benjamin Landers
  */
 public class MainRenderer extends Renderer
 {
+	ShapeRenderer debugRenderer;
 	public Animator animator;
 	TextureRegion currentFrame;
 	float stateTime = 0;
@@ -21,6 +25,7 @@ public class MainRenderer extends Renderer
 	GraphicEntity entity;
 	GraphicCharacter player;
 	Controller controller; 
+	boolean debug =true;
 	
 	BitmapFont font = new BitmapFont();
 	public MainRenderer(SpriteBatch batch, SlothMain reference)
@@ -30,8 +35,8 @@ public class MainRenderer extends Renderer
 		entity = new GraphicEntity(frameUpdater);
 		animator = new Animator();
 		player = new GraphicCharacter(animator, Assets.bodyAnim,  Assets.armAnim,  Assets.bodyAnim);
-		//reference.animator.addAnimations(frameUpdater);
 		controller = new Controller();
+		debugRenderer = new ShapeRenderer();
 	}
 
 	@Override
@@ -45,10 +50,29 @@ public class MainRenderer extends Renderer
 		//player.update(stateTime);
 		player.left = controller.player.left;
 		player.x = controller.player.x;
+		player.y = controller.player.y;
 		player.render(batch);
+		
 		//entity.render(batch);
 		//Graphics.draw(batch, Assets.getAnimation(Assets.bodyAnim).getKeyFrame(stateTime, true), .4f, .3f, .1f, 0, true);
 		font.draw(batch, "" + Gdx.graphics.getFramesPerSecond(), 400, 300);
+		batch.end();
+		if(debug)
+		{
+			debugRenderer.begin(ShapeRenderer.ShapeType.Rectangle);
+			debugRenderer.setColor(Color.RED);
+			for(Block block:controller.world.blocks)
+			{
+				debugRenderer.rect(block.x*SlothMain.width, block.y*SlothMain.height, block.width*SlothMain.width, block.height*SlothMain.height);
+			}
+			debugRenderer.setColor(Color.GREEN);
+			for(Block vine:controller.world.vines)
+			{
+				debugRenderer.rect(vine.x*SlothMain.width, vine.y*SlothMain.height, vine.width*SlothMain.width, vine.height*SlothMain.height);
+			}
+			debugRenderer.end();
+		}
+		batch.begin();
 	}
 
 	@Override
