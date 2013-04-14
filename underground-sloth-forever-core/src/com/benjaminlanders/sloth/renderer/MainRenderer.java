@@ -62,7 +62,6 @@ public class MainRenderer extends Renderer
 			player.units[1].frame = Assets.getAnimation(Assets.armAnim).getKeyFrame(.15f);
 			player.units[2].frame = Assets.getAnimation(Assets.bodyAnim).getKeyFrame(.001f);
 			player.units[3].frame = Assets.getAnimation(Assets.armAnim).getKeyFrame(.001f);
-			Gdx.app.log("walking", "no");
 		}
 		player.x = controller.player.x;
 		player.y = controller.player.y;

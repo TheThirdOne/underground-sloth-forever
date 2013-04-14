@@ -8,7 +8,6 @@ public class World
 	public World(String file)
 	{
 		String[] types = file.split("=");
-		Gdx.app.log("test", types[0]);
 		String[] blocks = types[0].split("\n");
 		String[] vines =  types[1].split("\n");
 		this.blocks = loadBlocks(blocks);

@@ -39,7 +39,6 @@ public class Controller
 	{
 		if(block.x < x && block.width + block.x > x)
 		{
-			Gdx.app.log("x - k?", "yes");
 			if(block.y < y && block.height + block.y > y)
 			{
 				return true;

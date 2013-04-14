@@ -8,7 +8,7 @@ public class Player
 	public boolean left, walking, climbing, moving;
 	public void playerUpdate(float deltaX, float deltaY, boolean walking, boolean climbing)
 	{
-		left = (walking|climbing)?((deltaX *100> 0)?false:true):left;
+		left = (walking|climbing)?(deltaX < 0):left;
 		x += (walking)?((Math.abs(deltaX) < RUN_SPEED)?((Math.abs(deltaX)*10> SLOW_THRESHOLD)?deltaX:0):RUN_SPEED*((deltaX < 0)?-1:1)) : 0;
 		y += deltaY;
 		this.walking = walking;

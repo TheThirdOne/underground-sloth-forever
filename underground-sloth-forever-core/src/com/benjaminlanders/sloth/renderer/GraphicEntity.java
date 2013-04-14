@@ -50,9 +50,8 @@ public class GraphicEntity
 	{
 		for(int i = 0; i < units.length;i++)
 		{	
-			batch.draw(units[i].frame,x*SlothMain.width-scaleX*SlothMain.width/2, 
-					y*SlothMain.height-scaleY*SlothMain.height/2, scaleX*SlothMain.width,scaleY*SlothMain.height);
-			//Gdx.app.log("test","x"++"y"+"width"+"h" );
+			batch.draw(units[i].frame,x*SlothMain.width-((flipX)?-1:1)*scaleX*SlothMain.width/2, 
+					y*SlothMain.height-scaleY*SlothMain.height/2, ((flipX)?-1:1)*scaleX*SlothMain.width,scaleY*SlothMain.height);
 		}
 	}
 }
