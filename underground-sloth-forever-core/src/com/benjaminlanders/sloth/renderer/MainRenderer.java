@@ -84,7 +84,7 @@ public class MainRenderer extends Renderer
 		
 		//entity.render(batch);
 		//Graphics.draw(batch, Assets.getAnimation(Assets.bodyAnim).getKeyFrame(stateTime, true), .4f, .3f, .1f, 0, true);
-		font.draw(batch, "" + Gdx.graphics.getFramesPerSecond(), 400, 300);
+		//font.draw(batch, "" + Gdx.graphics.getFramesPerSecond(), 400, 300);
 		batch.end();
 		if(debug)
 		{
