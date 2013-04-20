@@ -19,10 +19,11 @@ public class Controller
 	}
 	public void update()
 	{
-		boolean walking = false, climbing = false;
+		boolean walking = false, climbing = false, needsUp = false;
 		for(Block block: world.blocks)
 		{
 			walking |= testCollision(block,player.x,player.y-.05f);
+			needsUp |= testCollision(block,player.x,player.y-.04f);
 		}
 		for(Block block: world.vines)
 		{
@@ -30,7 +31,7 @@ public class Controller
 			
 		}
 		walking |= climbing;
-		float deltaY = (climbing&&Gdx.input.isTouched())?.005f:((walking)?0:-.025f);
+		float deltaY = (climbing&&Gdx.input.isTouched())?.005f:((walking)?((needsUp)?.004f:0):-.025f);
 		player.playerUpdate(Gdx.input.getX()/((float)Gdx.graphics.getWidth()) - player.x,deltaY , walking, climbing);
 		
 	}
