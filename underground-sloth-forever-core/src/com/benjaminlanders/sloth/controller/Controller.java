@@ -27,7 +27,7 @@ public class Controller
 		}
 		for(Block block: world.vines)
 		{
-			climbing |= testCollision(block,player.x,player.y-.04f);
+			climbing |= testCollision(block,player.x,player.y-.03f);
 			
 		}
 		walking |= climbing;

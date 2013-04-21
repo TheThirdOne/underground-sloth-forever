@@ -11,6 +11,11 @@ public class Player
 		left = (walking|climbing)?(deltaX < 0):left;
 		x += (walking)?((Math.abs(deltaX) < RUN_SPEED)?((Math.abs(deltaX)*10> SLOW_THRESHOLD)?deltaX:0):RUN_SPEED*((deltaX < 0)?-1:1)) : 0;
 		y += deltaY;
+		if(y < -2)
+		{
+			y = 1f;
+			x = .1f;
+		}
 		this.walking = walking;
 		this.climbing = climbing;
 		moving = (Math.abs(deltaX) < RUN_SPEED);		
