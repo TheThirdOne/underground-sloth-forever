@@ -28,7 +28,9 @@ public class SlothMain implements ApplicationListener
 		splash = new SplashScreen(batch, this, Assets.getImage(Assets.libGdx));
 		animation = new StoryRenderer(batch, this, Assets.story0, 
 				new int[]{Assets.story1 , Assets.story2, Assets.story3 , Assets.story4,
-							Assets.story5, Assets.story6 , Assets.story7, Assets.story8});
+							Assets.story5, Assets.story6},
+				new int[]{Assets.storyText1 , Assets.storyText2, Assets.storyText3 , Assets.storyText4,
+							Assets.storyText5, Assets.storyText6} );
 		main = new MainRenderer(batch, this);
 	}
 

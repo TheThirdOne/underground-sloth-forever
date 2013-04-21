@@ -1,6 +1,7 @@
 package com.benjaminlanders.sloth.renderer;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.benjaminlanders.sloth.SlothMain;
 import com.benjaminlanders.sloth.helper.Assets;
@@ -8,15 +9,19 @@ import com.benjaminlanders.sloth.helper.Assets;
 public class StoryRenderer extends Renderer
 {
 	int background;
-	int[] story;
+	int[] story, text;
 	int state;
 	float stateTime;
+	BitmapFont font;
 	
-	public StoryRenderer(SpriteBatch batch, SlothMain reference, int background, int[] story)
+	public StoryRenderer(SpriteBatch batch, SlothMain reference, int background, int[] story,int[] text)
 	{
 		super(batch, reference);
 		this.story = story;
 		this.background = background;
+		font = new BitmapFont();
+		font.setScale(SlothMain.width/600,SlothMain.height/400);
+		this.text = text;
 	}
 
 	@Override
@@ -34,9 +39,10 @@ public class StoryRenderer extends Renderer
 		{
 			batch.draw(Assets.getImage(Assets.background), 0,0, SlothMain.width, SlothMain.height);
 		}
-		if(state < 8)
+		if(state < 6)
 		{
 			batch.draw(Assets.getImage(story[state]), 0,0, SlothMain.width, SlothMain.height);
+			font.draw(batch, Assets.getString(text[state]), 0, SlothMain.height);
 		}
 
 	}
@@ -45,7 +51,7 @@ public class StoryRenderer extends Renderer
 	public boolean isFinished()
 	{
 		// TODO Auto-generated method stub
-		return state >= 8;
+		return state >= 6;
 	}
 
 }

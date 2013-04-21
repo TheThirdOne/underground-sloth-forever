@@ -35,9 +35,16 @@ public class Assets
 	public static final int rock = 12;
 	public static final int vine = 13;
 	
-	private static final String[] stringAddress = {"level-1"};
-	public static String[] strings = new String[1];
+	private static final String[] stringAddress = {"level-1","story-1","story-2",
+		"story-3","story-4","story-5","story-6","story-7","story-8"};
+	public static String[] strings = new String[9];
 	public static final int level1 = 0;
+	public static final int storyText1 = 1;
+	public static final int storyText2 = 2;
+	public static final int storyText3 = 3;
+	public static final int storyText4 = 4;
+	public static final int storyText5 = 5;
+	public static final int storyText6 = 6;
 	public static String getString(int reference)
 	{
 		if(strings.length <= reference)
