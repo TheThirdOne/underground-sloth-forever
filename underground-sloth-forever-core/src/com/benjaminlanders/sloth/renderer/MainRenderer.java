@@ -1,5 +1,8 @@
 package com.benjaminlanders.sloth.renderer;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -25,6 +28,8 @@ public class MainRenderer extends Renderer
 	GraphicCharacter player;
 	Controller controller; 
 	boolean debug =false;
+	Music music;
+	
 	
 	BitmapFont font = new BitmapFont();
 	public MainRenderer(SpriteBatch batch, SlothMain reference)
@@ -36,6 +41,10 @@ public class MainRenderer extends Renderer
 		player = new GraphicCharacter(animator, Assets.bodyAnim,  Assets.armAnim,  Assets.climbAnim);
 		controller = new Controller();
 		debugRenderer = new ShapeRenderer();
+		music = Gdx.audio.newMusic(Gdx.files.internal("sounds/music.wav"));
+		music.setLooping(true);
+		music.play();
+		
 	}
 
 	@Override
