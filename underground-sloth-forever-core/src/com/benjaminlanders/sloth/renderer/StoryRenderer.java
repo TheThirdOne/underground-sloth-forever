@@ -50,7 +50,6 @@ public class StoryRenderer extends Renderer
 	@Override
 	public boolean isFinished()
 	{
-		// TODO Auto-generated method stub
 		return state >= 6;
 	}
 
