@@ -20,8 +20,10 @@ public class SplashScreen extends Renderer
 
 	public void render(float delta)
 	{
+		batch.begin();
 		timeElapsed += delta;
 		batch.draw(splash, 0,0, SlothMain.width, SlothMain.height);
+		batch.end();
 	}
 	public boolean isFinished()
 	{

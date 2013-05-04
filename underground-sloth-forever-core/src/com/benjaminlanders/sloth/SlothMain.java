@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.benjaminlanders.sloth.controller.Controller;
 import com.benjaminlanders.sloth.helper.Assets;
 import com.benjaminlanders.sloth.renderer.MainRenderer;
 import com.benjaminlanders.sloth.renderer.Renderer;
@@ -14,7 +15,9 @@ public class SlothMain implements ApplicationListener
 {
 	private SpriteBatch batch;
 	private Renderer splash, animation, main;
-	
+	private int state;
+	private Controller controller;
+	public static final int SPLASH  = 0, MENU = 1, STORY = 2, MAIN = 3;
 	public static float height, width;
 	
 	@Override
@@ -31,7 +34,8 @@ public class SlothMain implements ApplicationListener
 							Assets.story5, Assets.story6},
 				new int[]{Assets.storyText1 , Assets.storyText2, Assets.storyText3 , Assets.storyText4,
 							Assets.storyText5, Assets.storyText6} );
-		main = new MainRenderer(batch, this);
+		controller = new Controller();
+		main = new MainRenderer(batch, this, controller);
 	}
 
 	@Override
@@ -45,21 +49,38 @@ public class SlothMain implements ApplicationListener
 	{	
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		if(!splash.isFinished())
+		switch(state)
 		{
-			splash.render(Gdx.graphics.getDeltaTime());
-		}else
-		if(!animation.isFinished())
-		{
-			animation.render(Gdx.graphics.getDeltaTime());
-		}else
-		{
-			main.render(Gdx.graphics.getDeltaTime());
+			case SPLASH:
+				if(!splash.isFinished())
+				{
+					splash.render(Gdx.graphics.getDeltaTime());
+					break;
+				}else
+				{
+					setState(STORY);
+				}
+			case MENU:
+				
+				break;
+			case STORY:
+				if(!animation.isFinished())
+				{
+					animation.render(Gdx.graphics.getDeltaTime());
+					break;
+				}else
+				{
+					setState(MAIN);
+				}
+			case MAIN:
+				main.render(Gdx.graphics.getDeltaTime());
+				break;
 		}
-		batch.end();
 	}
-
+	public void setState(int state)
+	{
+		this.state = state;
+	}
 	@Override
 	public void resize(int width, int height)
 	{

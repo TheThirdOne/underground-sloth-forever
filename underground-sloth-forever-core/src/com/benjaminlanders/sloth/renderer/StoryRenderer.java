@@ -27,6 +27,7 @@ public class StoryRenderer extends Renderer
 	@Override
 	public void render(float delta)
 	{
+		batch.begin();
 		if(Gdx.input.justTouched())
 		{
 			state++;
@@ -44,7 +45,7 @@ public class StoryRenderer extends Renderer
 			batch.draw(Assets.getImage(story[state]), 0,0, SlothMain.width, SlothMain.height);
 			font.draw(batch, Assets.getString(text[state]), 0, SlothMain.height);
 		}
-
+		batch.end();
 	}
 
 	@Override

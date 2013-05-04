@@ -32,24 +32,25 @@ public class MainRenderer extends Renderer
 	
 	
 	BitmapFont font = new BitmapFont();
-	public MainRenderer(SpriteBatch batch, SlothMain reference)
+	public MainRenderer(SpriteBatch batch, SlothMain reference, Controller controller)
 	{
 		super(batch, reference);
 		frameUpdater[0] = new AnimationUnit(0,Animation.NORMAL,Assets.bodyAnim,0,0,true);
 		entity = new GraphicEntity(frameUpdater);
 		animator = new Animator();
 		player = new GraphicCharacter(animator, Assets.bodyAnim,  Assets.armAnim,  Assets.climbAnim);
-		controller = new Controller();
 		debugRenderer = new ShapeRenderer();
 		music = Gdx.audio.newMusic(Gdx.files.internal("sounds/music.wav"));
 		music.setLooping(true);
 		music.play();
+		this.controller = controller;
 		
 	}
 
 	@Override
 	public void render(float delta) 
 	{
+		batch.begin();
         stateTime += delta; 
         controller.update();
         batch.draw(Assets.getImage(Assets.background), 0,0, SlothMain.width, SlothMain.height);
@@ -110,7 +111,6 @@ public class MainRenderer extends Renderer
 			//debugRenderer.rect(player.x*SlothMain.width, player.y*SlothMain.height, .1f*player.units[2].frame.getRegionWidth(), .1f*player.units[2].frame.getRegionHeight());
 			debugRenderer.end();
 		}
-		batch.begin();
 	}
 
 	@Override
