@@ -31,7 +31,7 @@ public class Controller
 			
 		}
 		walking |= climbing;
-		float deltaY = (climbing&&Gdx.input.isTouched())?.005f:((walking)?((needsUp)?.004f:0):-.025f);
+		float deltaY = (climbing&&Gdx.input.isTouched())?.005f:((walking)?((needsUp)?.004f:0):player.vY-.001f);
 		player.playerUpdate(Gdx.input.getX()/((float)Gdx.graphics.getWidth()) - player.x,deltaY , walking, climbing);
 		
 	}

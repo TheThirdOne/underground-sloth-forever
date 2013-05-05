@@ -3,6 +3,7 @@ package com.benjaminlanders.sloth;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.benjaminlanders.sloth.controller.Controller;
 import com.benjaminlanders.sloth.helper.Assets;
@@ -29,11 +30,15 @@ public class SlothMain implements ApplicationListener
 		batch = new SpriteBatch();
 		Assets.getImage(3);
 		splash = new SplashScreen(batch, this, Assets.getImage(Assets.libGdx));
+		
 		animation = new StoryRenderer(batch, this, Assets.story0, 
 				new int[]{Assets.story1 , Assets.story2, Assets.story3 , Assets.story4,
 							Assets.story5, Assets.story6},
 				new int[]{Assets.storyText1 , Assets.storyText2, Assets.storyText3 , Assets.storyText4,
 							Assets.storyText5, Assets.storyText6} );
+		
+		Assets.font = new BitmapFont();
+		
 		controller = new Controller();
 		main = new MainRenderer(batch, this, controller);
 	}

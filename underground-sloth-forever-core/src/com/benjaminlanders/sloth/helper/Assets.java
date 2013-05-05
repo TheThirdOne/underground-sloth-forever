@@ -3,6 +3,7 @@ package com.benjaminlanders.sloth.helper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.benjaminlanders.sloth.SlothMain;
 import com.benjaminlanders.sloth.helper.Loader;
@@ -18,8 +19,8 @@ public class Assets
  	
 	
 	private static final String[] imageAddress = {"nullimage","libgdx","game-background","story-background",
-		"story-1","story-2","story-3","story-4","story-5","story-6","story-7","story-8","rock","vines"};
-	public static TextureRegion[] images = new TextureRegion[14];
+		"story-1","story-2","story-3","story-4","story-5","story-6","story-7","story-8","rock","vines","radioactivefruit"};
+	public static TextureRegion[] images = new TextureRegion[15];
 	public static final int nullimage = 0;
 	public static final int libGdx = 1;
 	public static final int background = 2;
@@ -34,6 +35,7 @@ public class Assets
 	public static final int story8 = 11;
 	public static final int rock = 12;
 	public static final int vine = 13;
+	public static final int fruit = 14;
 	
 	private static final String[] stringAddress = {"level-1","story-1","story-2",
 		"story-3","story-4","story-5","story-6","story-7","story-8"};
@@ -45,6 +47,9 @@ public class Assets
 	public static final int storyText4 = 4;
 	public static final int storyText5 = 5;
 	public static final int storyText6 = 6;
+	
+	public static BitmapFont font;
+	
 	public static String getString(int reference)
 	{
 		if(strings.length <= reference)

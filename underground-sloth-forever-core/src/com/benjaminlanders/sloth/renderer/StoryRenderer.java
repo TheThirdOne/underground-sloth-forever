@@ -19,14 +19,13 @@ public class StoryRenderer extends Renderer
 		super(batch, reference);
 		this.story = story;
 		this.background = background;
-		font = new BitmapFont();
-		font.setScale(SlothMain.width/600,SlothMain.height/400);
 		this.text = text;
 	}
 
 	@Override
 	public void render(float delta)
 	{
+		Assets.font.setScale(SlothMain.width/600,SlothMain.height/400);
 		batch.begin();
 		if(Gdx.input.justTouched())
 		{
@@ -43,7 +42,7 @@ public class StoryRenderer extends Renderer
 		if(state < 6)
 		{
 			batch.draw(Assets.getImage(story[state]), 0,0, SlothMain.width, SlothMain.height);
-			font.draw(batch, Assets.getString(text[state]), 0, SlothMain.height);
+			Assets.font.draw(batch, Assets.getString(text[state]), 0, SlothMain.height);
 		}
 		batch.end();
 	}
