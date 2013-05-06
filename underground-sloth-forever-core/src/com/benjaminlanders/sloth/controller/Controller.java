@@ -2,6 +2,7 @@ package com.benjaminlanders.sloth.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.benjaminlanders.sloth.helper.Assets;
+import com.benjaminlanders.sloth.model.Apple;
 import com.benjaminlanders.sloth.model.Block;
 import com.benjaminlanders.sloth.model.Player;
 import com.benjaminlanders.sloth.model.World;
@@ -13,7 +14,10 @@ public class Controller
 	public Controller()
 	{
 		player = new Player();
-		world = new World(Assets.getString(Assets.level1));
+	}
+	public void selectLevel(int level)
+	{
+		world = new World(Assets.getString(Assets.levels[level]));
 		player.x = .1f;
 		player.y = .8f;
 	}
@@ -34,6 +38,11 @@ public class Controller
 		float deltaY = (climbing&&Gdx.input.isTouched())?.005f:((walking)?((needsUp)?.004f:0):player.vY-.001f);
 		player.playerUpdate(Gdx.input.getX()/((float)Gdx.graphics.getWidth()) - player.x,deltaY , walking, climbing);
 		
+	}
+	public boolean isDone()
+	{
+		return player.x >= world.apple.x && player.y >= world.apple.y && 
+				player.x < Apple.width + world.apple.x && player.y < Apple.height + world.apple.y;
 	}
 	public static boolean testCollision(Block block, float x , float y)
 	{

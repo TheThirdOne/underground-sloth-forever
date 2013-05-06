@@ -39,16 +39,16 @@ public class Assets
 	public static final int fruit = 14;
 	public static final int menuBackground = 15;
 	
-	private static final String[] stringAddress = {"level-1","story-1","story-2",
-		"story-3","story-4","story-5","story-6","story-7","story-8"};
+	private static final String[] stringAddress = {"story-1","story-2",
+		"story-3","story-4","story-5","story-6","level-1","level-2"};
 	public static String[] strings = new String[9];
-	public static final int level1 = 0;
-	public static final int storyText1 = 1;
-	public static final int storyText2 = 2;
-	public static final int storyText3 = 3;
-	public static final int storyText4 = 4;
-	public static final int storyText5 = 5;
-	public static final int storyText6 = 6;
+	public static final int storyText1 = 0;
+	public static final int storyText2 = 1;
+	public static final int storyText3 = 2;
+	public static final int storyText4 = 3;
+	public static final int storyText5 = 4;
+	public static final int storyText6 = 5;
+	public static final int[] levels = {6,7};
 	
 	public static BitmapFont font;
 	

@@ -10,7 +10,7 @@ public class StoryRenderer extends Renderer
 {
 	int background;
 	int[] story, text;
-	int state;
+	public int state;
 	float stateTime;
 	BitmapFont font;
 	
@@ -25,7 +25,7 @@ public class StoryRenderer extends Renderer
 	@Override
 	public void render(float delta)
 	{
-		Assets.font.setScale(SlothMain.width/600,SlothMain.height/400);
+		Assets.font.setScale(SlothMain.width/1200,SlothMain.height/800);
 		batch.begin();
 		if(Gdx.input.justTouched())
 		{

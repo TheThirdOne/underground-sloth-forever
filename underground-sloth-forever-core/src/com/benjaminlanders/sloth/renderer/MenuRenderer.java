@@ -6,30 +6,27 @@ import com.benjaminlanders.sloth.helper.Assets;
 import com.benjaminlanders.sloth.renderer.Renderer;
 import com.benjaminlanders.sloth.SlothMain;
 
-public class MenuRnderer extends Renderer
+public class MenuRenderer extends Renderer
 {
 	boolean isFinished = false;
 	String[] levelNames = {"Level 1: The Learning", "Level 2: The Learning", "Level 3: The Learning",
 			"Level 4: The Learning", "Level 5: The Learning", "Level 6: The Learning"};
 	public static final int col = 3, row = 3;
 	
-	public MenuRnderer(SpriteBatch batch, SlothMain reference)
+	public MenuRenderer(SpriteBatch batch, SlothMain reference)
 	{
 		super(batch, reference);
-		
 	}
 
 	@Override
 	public void render(float delta)
 	{
-		detectSelection();
 		batch.begin();
 		renderBackground();
 		renderTitle();
 		renderNames();
 		batch.end();
 	}
-
 	@Override
 	public boolean isFinished()
 	{
@@ -42,12 +39,12 @@ public class MenuRnderer extends Renderer
 	}
 	public void renderTitle()
 	{
-		Assets.font.setScale(3);
+		Assets.font.setScale(SlothMain.width/200, 3*SlothMain.height/400);
 		Assets.font.draw(batch, "Levels", SlothMain.width/2 - Assets.font.getBounds("Levels").width/2, SlothMain.height*.99f);
 	}
 	public void renderNames()
 	{
-		Assets.font.setScale(.7f);
+		Assets.font.setScale(SlothMain.width*.7f/600,SlothMain.height*.7f/400);
 		for(int i = 0; i < levelNames.length; i++)
 		{
 			renderName(levelNames[i],i%col,(int )i / col);
@@ -65,7 +62,6 @@ public class MenuRnderer extends Renderer
 			{
 				if(detectCollide(levelNames[i],i%col,(int )i / col))
 				{
-					Gdx.app.log("info", "" + i);
 					return i;
 				}
 			}
@@ -74,7 +70,6 @@ public class MenuRnderer extends Renderer
 	}
 	public boolean detectCollide(String name, int x, int y)
 	{
-		//System.out.println(Gdx.graphics.getWidth() + " " + SlothMain.width);
 		float inX  = Gdx.input.getX()/((float) Gdx.graphics.getWidth());
 		float inY = 1 - Gdx.input.getY()/((float) Gdx.graphics.getHeight());
 		
@@ -84,11 +79,6 @@ public class MenuRnderer extends Renderer
 		float width = Assets.font.getBounds(name).width/SlothMain.width;
 		float height = Assets.font.getBounds(name).height/SlothMain.height;
 		
-		if(inX > trueX && inY < trueY && inX < trueX + width && inY > trueY - height)
-		{
-			return true;
-		}
-		return false;
-		
+		return inX > trueX && inY < trueY && inX < trueX + width && inY > trueY - height;		
 	}
 }

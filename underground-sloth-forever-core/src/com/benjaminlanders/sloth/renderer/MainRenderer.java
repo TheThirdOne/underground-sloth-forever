@@ -2,7 +2,6 @@ package com.benjaminlanders.sloth.renderer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -12,6 +11,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.benjaminlanders.sloth.SlothMain;
 import com.benjaminlanders.sloth.controller.Controller;
 import com.benjaminlanders.sloth.helper.Assets;
+import com.benjaminlanders.sloth.model.Apple;
 import com.benjaminlanders.sloth.model.Block;
 /**
  * Currently a test bed for graphics
@@ -28,6 +28,7 @@ public class MainRenderer extends Renderer
 	GraphicCharacter player;
 	Controller controller; 
 	boolean debug =false;
+	public boolean finished = false;
 	Music music;
 	
 	
@@ -53,6 +54,8 @@ public class MainRenderer extends Renderer
 		batch.begin();
         stateTime += delta; 
         controller.update();
+        if(controller.isDone())
+        	finished = true;
         batch.draw(Assets.getImage(Assets.background), 0,0, SlothMain.width, SlothMain.height);
        // currentFrame = Assets.animations[Assets.legsAnim].getKeyFrame(stateTime, true); 
 		animator.render(stateTime);
@@ -90,7 +93,8 @@ public class MainRenderer extends Renderer
 		}
 		player.render(batch);
 		
-		
+		batch.draw(Assets.getImage(Assets.fruit), controller.world.apple.x*SlothMain.width,
+				controller.world.apple.y*SlothMain.height, Apple.width*SlothMain.width, Apple.height*SlothMain.height);
 		//entity.render(batch);
 		//Graphics.draw(batch, Assets.getAnimation(Assets.bodyAnim).getKeyFrame(stateTime, true), .4f, .3f, .1f, 0, true);
 		//font.draw(batch, "" + Gdx.graphics.getFramesPerSecond(), 400, 300);
@@ -116,8 +120,7 @@ public class MainRenderer extends Renderer
 	@Override
 	public boolean isFinished() 
 	{
-		
-		return false;
+		return finished;
 	}
 
 }

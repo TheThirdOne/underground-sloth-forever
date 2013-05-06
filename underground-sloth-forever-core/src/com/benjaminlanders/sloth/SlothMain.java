@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.benjaminlanders.sloth.controller.Controller;
 import com.benjaminlanders.sloth.helper.Assets;
 import com.benjaminlanders.sloth.renderer.MainRenderer;
-import com.benjaminlanders.sloth.renderer.MenuRnderer;
+import com.benjaminlanders.sloth.renderer.MenuRenderer;
 import com.benjaminlanders.sloth.renderer.Renderer;
 import com.benjaminlanders.sloth.renderer.SplashScreen;
 import com.benjaminlanders.sloth.renderer.StoryRenderer;
@@ -43,7 +43,7 @@ public class SlothMain implements ApplicationListener
 		
 		controller = new Controller();
 		main = new MainRenderer(batch, this, controller);
-		menu = new MenuRnderer(batch,this);
+		menu = new MenuRenderer(batch,this);
 		
 	}
 
@@ -70,8 +70,20 @@ public class SlothMain implements ApplicationListener
 					setState(MENU);
 				}
 			case MENU:
-				menu.render(Gdx.graphics.getDeltaTime());
-				break;
+				int level = ((MenuRenderer)menu).detectSelection();
+				if(level == -1)
+				{
+					menu.render(Gdx.graphics.getDeltaTime());
+					break;
+				}
+				controller.selectLevel(level);
+				if(level == 0)
+				{
+					setState(STORY);
+				}else
+				{
+					setState(MAIN);
+				}
 			case STORY:
 				if(!animation.isFinished())
 				{
@@ -82,13 +94,28 @@ public class SlothMain implements ApplicationListener
 					setState(MAIN);
 				}
 			case MAIN:
-				main.render(Gdx.graphics.getDeltaTime());
+				if(!main.isFinished())
+				{
+					main.render(Gdx.graphics.getDeltaTime());
+				}else
+				{
+					setState(MENU);
+					menu.render(Gdx.graphics.getDeltaTime());
+				}
 				break;
 		}
 	}
 	public void setState(int state)
 	{
 		this.state = state;
+		if(state == STORY)
+		{
+			((StoryRenderer)animation).state = 0;
+		}
+		if(state == MAIN)
+		{
+			((MainRenderer)main).finished = false;
+		}
 	}
 	@Override
 	public void resize(int width, int height)
