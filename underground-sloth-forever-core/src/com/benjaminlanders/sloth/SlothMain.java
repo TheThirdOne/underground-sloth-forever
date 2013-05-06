@@ -83,6 +83,8 @@ public class SlothMain implements ApplicationListener
 				}else
 				{
 					setState(MAIN);
+					main.render(Gdx.graphics.getDeltaTime());
+					break;
 				}
 			case STORY:
 				if(!animation.isFinished())

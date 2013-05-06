@@ -9,8 +9,7 @@ import com.benjaminlanders.sloth.SlothMain;
 public class MenuRenderer extends Renderer
 {
 	boolean isFinished = false;
-	String[] levelNames = {"Level 1: The Learning", "Level 2: The Learning", "Level 3: The Learning",
-			"Level 4: The Learning", "Level 5: The Learning", "Level 6: The Learning"};
+	String[] levelNames = {"Level 1: The Learning", "Level 2: Useless"};
 	public static final int col = 3, row = 3;
 	
 	public MenuRenderer(SpriteBatch batch, SlothMain reference)
