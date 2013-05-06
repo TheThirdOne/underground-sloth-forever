@@ -19,8 +19,9 @@ public class Assets
  	
 	
 	private static final String[] imageAddress = {"nullimage","libgdx","game-background","story-background",
-		"story-1","story-2","story-3","story-4","story-5","story-6","story-7","story-8","rock","vines","radioactivefruit"};
-	public static TextureRegion[] images = new TextureRegion[15];
+		"story-1","story-2","story-3","story-4","story-5","story-6","story-7","story-8","rock","vines","radioactivefruit"
+		,"menubackground"};
+	public static TextureRegion[] images = new TextureRegion[16];
 	public static final int nullimage = 0;
 	public static final int libGdx = 1;
 	public static final int background = 2;
@@ -36,6 +37,7 @@ public class Assets
 	public static final int rock = 12;
 	public static final int vine = 13;
 	public static final int fruit = 14;
+	public static final int menuBackground = 15;
 	
 	private static final String[] stringAddress = {"level-1","story-1","story-2",
 		"story-3","story-4","story-5","story-6","story-7","story-8"};
