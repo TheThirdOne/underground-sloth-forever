@@ -9,7 +9,7 @@ import com.benjaminlanders.sloth.SlothMain;
 public class MenuRenderer extends Renderer
 {
 	boolean isFinished = false;
-	String[] levelNames = {"Level 1: The Learning", "Level 2: Useless"};
+	String[] levelNames = {"Level 1: Walk", "Level 2: Climb","Level 3: Begin", "Level 4: End"};
 	public static final int col = 3, row = 3;
 	
 	public MenuRenderer(SpriteBatch batch, SlothMain reference)
@@ -46,7 +46,7 @@ public class MenuRenderer extends Renderer
 		Assets.font.setScale(SlothMain.width*.7f/600,SlothMain.height*.7f/400);
 		for(int i = 0; i < levelNames.length; i++)
 		{
-			renderName(levelNames[i],i%col,(int )i / col);
+			renderName(levelNames[i], i%col ,(int) i/col);
 		}
 	}
 	public void renderName(String name, int x, int y)
