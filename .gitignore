@@ -15,9 +15,6 @@ tester/
 buildjar.xml
 jar-in-jar-loader.zip
 
-#javadoc#
-doc/
-
 *.prefs
  
 */libs
@@ -26,3 +23,5 @@ doc/
 
 *-html/
 */gen/
+
+underground-sloth*
